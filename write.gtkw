@@ -1,0 +1,67 @@
+[*]
+[*] GTKWave Analyzer v3.3.68 (w)1999-2016 BSI
+[*] Mon Apr 11 09:48:31 2016
+[*]
+[dumpfile] "D:\Users\thirion2\Documents\FPGA\I2CSLAVE\core.vcd"
+[dumpfile_mtime] "Mon Apr 11 09:47:44 2016"
+[dumpfile_size] 10261
+[savefile] "D:\Users\thirion2\Documents\FPGA\I2CSLAVE\toto.gtkw"
+[timestart] 0
+[size] 1920 1018
+[pos] -184 -184
+*-29.306906 1001000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 167
+[sst_expanded] 1
+[sst_vpaned_height] 538
+@22
+i_i2cslave_0.address[7:0]
+i_i2cslave_0.address_i[7:0]
+i_i2cslave_0.counter
+i_i2cslave_0.data_in[7:0]
+i_i2cslave_0.data_out[7:0]
+@28
+i_i2cslave_0.falling_scl
+i_i2cslave_0.rising_scl
+i_i2cslave_0.mclk
+i_i2cslave_0.nrst
+i_i2cslave_0.rd
+i_i2cslave_0.scl_in
+i_i2cslave_0.sda_in
+i_i2cslave_0.sda
+i_i2cslave_0.sda_out
+i_i2cslave_0.scl_out
+@22
+i_i2cslave_0.shiftreg[7:0]
+@28
+i_i2cslave_0.start_cond
+i_i2cslave_0.stop_cond
+i_i2cslave_0.wr
+rd
+@22
+address[7:0]
+data_in[7:0]
+data_out[7:0]
+@28
+mclk
+nrst
+running
+scl_in
+scl_out
+sda_in
+sda_out
+wr
+@200
+-
+@28
+i_i2cslave_0.scl_q
+@29
+i_i2cslave_0.scl_qq
+@28
+i_i2cslave_0.sda_qq
+i_i2cslave_0.scl_qqq
+i_i2cslave_0.sda_q
+i_i2cslave_0.sda_qqq
+i_i2cslave_0.address_incr
+[pattern_trace] 1
+[pattern_trace] 0
