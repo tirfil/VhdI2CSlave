@@ -31,3 +31,7 @@ Note:
 Not tested yet.
 Need to add open drain pads for SDA SCL (use positive logic)
 
+i2cslave - Finite State Machine:
+--------------------------------
+
+![fsm](https://github.com/tirfil/VhdI2CSlave/blob/master/i2cslave.png)
