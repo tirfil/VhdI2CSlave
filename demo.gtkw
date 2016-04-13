@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.68 (w)1999-2016 BSI
+[*] Wed Apr 13 14:10:54 2016
+[*]
+[dumpfile] "D:\Users\thirion2\Documents\FPGA\I2CSLAVE\core.vcd"
+[dumpfile_mtime] "Wed Apr 13 13:44:27 2016"
+[dumpfile_size] 109632
+[savefile] "D:\Users\thirion2\Documents\FPGA\I2CSLAVE\demo.gtkw"
+[timestart] 18942000000
+[size] 1920 1018
+[pos] -109 -109
+*-29.846025 20095000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@22
+i_i2cdemo_0.i_ram.address[7:0]
+@28
+i_i2cdemo_0.i_ram.clock
+@22
+i_i2cdemo_0.i_ram.data[7:0]
+i_i2cdemo_0.i_ram.q[7:0]
+@28
+i_i2cdemo_0.i_ram.wren
+mclk
+nrst
+@22
+result[7:0]
+@28
+running
+scl
+sda
+i_i2cdemo_0.sda_in
+i_i2cdemo_0.sda_out
+i_i2cdemo_0.i_i2citf.start_cond
+i_i2cdemo_0.i_i2citf.stop_cond
+@29
+i_i2cdemo_0.rd
+[pattern_trace] 1
+[pattern_trace] 0
