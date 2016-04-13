@@ -43,6 +43,7 @@ architecture rtl of I2CSLAVE is
 
 	signal rising_scl, falling_scl : std_logic;
 	signal address_i : std_logic_vector(7 downto 0);
+	signal next_address : std_logic_vector(7 downto 0);
 	signal counter : integer range 0 to 7;
 	signal start_cond : std_logic;
 	signal stop_cond  : std_logic;
@@ -54,7 +55,10 @@ architecture rtl of I2CSLAVE is
 begin
 
 	ADDRESS <= address_i;
-
+	
+	next_address <= (others=>'0') when (address_i = x"FF") else
+		std_logic_vector(to_unsigned(to_integer(unsigned( address_i )) + 1, 8));
+	
 	S_RSY: process(MCLK,nRST)
 	begin
 		if (nRST = '0') then
@@ -195,7 +199,7 @@ begin
 					state <= S_SHIFTIN;
 					shiftreg <= (others=>'0');
 					if (address_incr = '1') then
-						address_i <= std_logic_vector(to_unsigned(to_integer(unsigned( address_i )) + 1, 8));
+						address_i <= next_address;
 					end if;
 				end if;
 			elsif(state = S_SENDNACK) then
@@ -221,7 +225,7 @@ begin
 					shiftreg(0) <= '1';
 					if (counter = 0) then
 						state <= S_READ;
-						address_i <= std_logic_vector(to_unsigned(to_integer(unsigned( address_i )) + 1, 8));
+						address_i <= next_address;
 						RD <= '1';
 					else
 						counter <= counter - 1;
