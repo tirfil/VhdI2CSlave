@@ -1,8 +1,8 @@
 --###############################
---# Project Name : 
---# File         : 
---# Project      : 
---# Engineer     : 
+--# Project Name : I2C Slave
+--# File         : i2cdemo.vhd
+--# Project      : ic2 slave + Single port RAM 256 * 8 (ALTERA compatible)
+--# Engineer     : Philippe THIRION
 --# Modification History
 --###############################
 
