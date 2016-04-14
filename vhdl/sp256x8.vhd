@@ -1,8 +1,8 @@
 --###############################
---# Project Name : 
+--# Project Name : I2C Slave
 --# File         : ALTERA compatible
 --# Project      : VHDL RAM model
---# Engineer     : 
+--# Engineer     : Philippe THIRION
 --# Modification History
 --###############################
 
