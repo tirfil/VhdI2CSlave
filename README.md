@@ -1,4 +1,3 @@
-"# VhdI2CSlave" 
 
 I2C Slave interface. Written in VHDL.
 =====================================
@@ -24,11 +23,18 @@ tb_i2cslave_write.vhd, tb_i2cslave_read.vhd : testbenches
 
 compile.bat, elaborate.bat, run.bat : windows scripts for ghdl simulator
 
-write.gtkw, read.gtkw : signals display for Gtkwave software
+write.gtkw, read.gtkw, demo.gtkw : signals display for Gtkwave software
 
+i2cdemo.vhd: example
 
-Note:
-Not tested yet.
+Altera Cyclone IV (EP4CE6E22C8) :
+
+About 140 Logic Elements used
+
+Note: 
+
+Not yet tested in FPGA
+
 Need to add open drain pads for SDA SCL (use positive logic)
 
 i2cslave - Finite State Machine:
