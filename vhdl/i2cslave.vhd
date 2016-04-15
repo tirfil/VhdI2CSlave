@@ -35,7 +35,7 @@ architecture rtl of I2CSLAVE is
 		S_ADDRESS, S_WRITE, S_SHIFTOUT, S_READ, S_WAITACK
 	);
 
-	type toperation is (OP_NONE, OP_READ, OP_WRITE);
+	type toperation is (OP_READ, OP_WRITE);
 	
 	signal state : tstate;
 	signal next_state : tstate;
@@ -135,7 +135,7 @@ begin
 				state <= S_IDLE;
 				SDA_OUT <= '1';
 				SCL_OUT <= '1';
-				operation <= OP_NONE;
+				operation <= OP_READ;
 				WR <= '0';
 				rd_d <= '0';
 				address_incr <= '0';
@@ -143,7 +143,7 @@ begin
 				state <= S_START;
 				SDA_OUT <= '1';
 				SCL_OUT <= '1';
-				operation <= OP_NONE;
+				operation <= OP_READ;
 				WR <= '0';
 				rd_d <= '0';
 				address_incr <= '0';
@@ -151,7 +151,7 @@ begin
 				state <= S_IDLE;
 				SDA_OUT <= '1';
 				SCL_OUT <= '1';
-				operation <= OP_NONE;
+				operation <= OP_READ;
 				WR <= '0';
 				rd_d <= '0';
 				address_incr <= '0';
