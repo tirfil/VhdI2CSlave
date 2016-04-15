@@ -87,18 +87,18 @@ begin
 			RD			=> RD
 		);
 	
---	B8 : process(MCLK,nRST)
---	begin
---		if (nRST = '0') then
---			BUFFER8 <= (others => '0');
---		elsif (MCLK'event and MCLK='1') then
---			if (RD = '1') then
---				BUFFER8 <= q;
---			end if;
---		end if;
---	end process B8;
+	B8 : process(MCLK,nRST)
+	begin
+		if (nRST = '0') then
+			BUFFER8 <= (others => '0');
+		elsif (MCLK'event and MCLK='1') then
+			if (RD = '1') then
+				BUFFER8 <= q;
+			end if;
+		end if;
+	end process B8;
 	
-	DATA_IN <= q;
+	DATA_IN <= BUFFER8;
 	
 	--  open drain PAD pull up 1.5K needed
 	SCL <= 'Z' when SCL_OUT='1' else '0';

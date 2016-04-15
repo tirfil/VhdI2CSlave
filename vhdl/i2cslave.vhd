@@ -52,6 +52,7 @@ architecture rtl of I2CSLAVE is
 	signal shiftreg : std_logic_vector(7 downto 0);
 	signal sda: std_logic;
 	signal address_incr : std_logic;
+	signal rd_d : std_logic;
 begin
 
 	ADDRESS <= address_i;
@@ -108,6 +109,15 @@ begin
 	end process STOP_BIT;
 	
 	sda <= sda_qq;
+	
+	RD_DELAY: process(MCLK, nRST)
+	begin
+		if (nRST = '0') then
+			RD <= '0';
+		elsif (MCLK'event and MCLK='1') then
+			RD <= rd_d;
+		end if;
+	end process RD_DELAY;
 
 	OTO: process(MCLK, nRST)
 	begin
@@ -116,7 +126,7 @@ begin
 			SDA_OUT <= '1';
 			SCL_OUT <= '1';
 			WR <= '0';
-			RD <= '0';
+			rd_d <= '0';
 			address_i <= (others=>'0');
 			DATA_OUT <= (others=>'0');
 			shiftreg <= (others=>'0');
@@ -127,7 +137,7 @@ begin
 				SCL_OUT <= '1';
 				operation <= OP_NONE;
 				WR <= '0';
-				RD <= '0';
+				rd_d <= '0';
 				address_incr <= '0';
 			elsif(start_cond = '1') then
 				state <= S_START;
@@ -135,7 +145,7 @@ begin
 				SCL_OUT <= '1';
 				operation <= OP_NONE;
 				WR <= '0';
-				RD <= '0';
+				rd_d <= '0';
 				address_incr <= '0';
 			elsif(state = S_IDLE) then
 				state <= S_IDLE;
@@ -143,7 +153,7 @@ begin
 				SCL_OUT <= '1';
 				operation <= OP_NONE;
 				WR <= '0';
-				RD <= '0';
+				rd_d <= '0';
 				address_incr <= '0';
 			elsif(state = S_START) then
 				shiftreg <= (others=>'0');
@@ -167,8 +177,8 @@ begin
 						state <= S_SENDACK;
 						if (sda = '1') then
 							operation <= OP_READ;
-							next_state <= S_READ;
-							RD <= '1';
+							-- next_state <= S_READ; -- no needed
+							rd_d <= '1';
 						else
 							operation <= OP_WRITE;
 							next_state <= S_ADDRESS;
@@ -180,17 +190,15 @@ begin
 				end if;
 			elsif(state = S_SENDACK) then
 				WR <= '0';
-				RD <= '0';
+				rd_d <= '0';
 				if (falling_scl = '1') then
 					SDA_OUT <= '0';
 					counter <= 7;
 					if (operation= OP_WRITE) then
 						state <= S_SENDACK2;
-					elsif (operation = OP_READ) then
+					else -- OP_READ
 						state <= S_SHIFTOUT;
 						shiftreg <= DATA_IN;
-					else
-						state <= S_IDLE;
 					end if;
 				end if;
 			elsif(state = S_SENDACK2) then
@@ -226,13 +234,13 @@ begin
 					if (counter = 0) then
 						state <= S_READ;
 						address_i <= next_address;
-						RD <= '1';
+						rd_d <= '1';
 					else
 						counter <= counter - 1;
 					end if;
 				end if;
 			elsif(state = S_READ) then
-				RD <= '0';
+				rd_d <= '0';
 				if (falling_scl = '1') then
 					SDA_OUT <= '1';
 					state <= S_WAITACK;
