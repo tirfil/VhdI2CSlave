@@ -1,6 +1,9 @@
 
-I2C Slave interface. Written in VHDL.
-=====================================
+I2C Slave interface.
+====================
+
+Written in VHDL.
+
 based on http://embeddedmicro.weebly.com/raspberry-pi.html
 
 *Purpose is an micro interface to access registers inside a FPGA.*  
@@ -25,20 +28,34 @@ compile.bat, elaborate.bat, run.bat : windows scripts for ghdl simulator
 
 write.gtkw, read.gtkw, demo.gtkw : signals display for Gtkwave software
 
-i2cdemo.vhd: example
+i2cdemo.vhd: example (i2cdemo project)
 
-Altera Cyclone IV (EP4CE6E22C8) :
-About 140 Logic Elements used
+i2cdemo project: i2cslave + RAM 256x8
+-------------------------------------
 
-Note: 
+Altera Cyclone II (EP2C5T144C8) : ~140 Logic Elements used.
 
 i2cdemo project tested with raspberry pi and cyclone II developpement board (see raspi directory)
 
-![mockup](https://github.com/tirfil/VhdI2CSlave/blob/master/image/raspi_cyclone_ii.JPG)
+![mockup](https://github.com/tirfil/VhdI2CSlave/blob/master/images/raspi_cyclone_ii.JPG)
+
+
+Notes: 
+------
 
 Need to add open drain pads for SDA SCL (use positive logic)
+
+For raspberry pi with python: 
+
+sudo apt-get install i2c-tools
+
+sudo apt-get install python-smbus
+
+
+
+
 
 i2cslave - Finite State Machine:
 --------------------------------
 
-![fsm](https://github.com/tirfil/VhdI2CSlave/blob/master/image/i2cslave.png)
+![fsm](https://github.com/tirfil/VhdI2CSlave/blob/master/images/i2cslave.png)
