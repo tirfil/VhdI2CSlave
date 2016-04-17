@@ -34,9 +34,11 @@ Note:
 
 i2cdemo project tested with raspberry pi and cyclone II developpement board (see raspi directory)
 
+![mockup](https://github.com/tirfil/VhdI2CSlave/blob/master/image/raspi_cyclone_ii.JPG)
+
 Need to add open drain pads for SDA SCL (use positive logic)
 
 i2cslave - Finite State Machine:
 --------------------------------
 
-![fsm](https://github.com/tirfil/VhdI2CSlave/blob/master/i2cslave.png)
+![fsm](https://github.com/tirfil/VhdI2CSlave/blob/master/image/i2cslave.png)
