@@ -28,12 +28,11 @@ write.gtkw, read.gtkw, demo.gtkw : signals display for Gtkwave software
 i2cdemo.vhd: example
 
 Altera Cyclone IV (EP4CE6E22C8) :
-
 About 140 Logic Elements used
 
 Note: 
 
-Not yet tested in FPGA
+i2cdemo project tested with raspberry pi and cyclone II developpement board (see raspi directory)
 
 Need to add open drain pads for SDA SCL (use positive logic)
 
