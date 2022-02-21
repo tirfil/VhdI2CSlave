@@ -6,26 +6,6 @@
 --# Modification History
 --###############################
 
-
---	copyright Philippe Thirion
---	github.com/tirfil
---
---    Copyright 2016 Philippe THIRION
---
---    This program is free software: you can redistribute it and/or modify
---    it under the terms of the GNU General Public License as published by
---    the Free Software Foundation, either version 3 of the License, or
---    (at your option) any later version.
-
---    This program is distributed in the hope that it will be useful,
---    but WITHOUT ANY WARRANTY; without even the implied warranty of
---    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
---    GNU General Public License for more details.
-
---    You should have received a copy of the GNU General Public License
---    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
@@ -45,7 +25,8 @@ entity I2CSLAVE is
 		DATA_OUT	: out	std_logic_vector(7 downto 0);
 		DATA_IN		: in	std_logic_vector(7 downto 0);
 		WR			: out	std_logic;
-		RD			: out	std_logic
+		RD			: out	std_logic;
+        READ_DONE   : out   std_logic
 	);
 end I2CSLAVE;
 
@@ -73,6 +54,7 @@ architecture rtl of I2CSLAVE is
 	signal sda: std_logic;
 	signal address_incr : std_logic;
 	signal rd_d : std_logic;
+    signal read_data_done : std_logic;
 begin
 
 	ADDRESS <= address_i;
@@ -150,6 +132,7 @@ begin
 			address_i <= (others=>'0');
 			DATA_OUT <= (others=>'0');
 			shiftreg <= (others=>'0');
+            read_data_done <= '0';
 		elsif (MCLK'event and MCLK='1') then
 			if (stop_cond = '1') then
 				state <= S_IDLE;
@@ -219,6 +202,7 @@ begin
 					else -- OP_READ
 						state <= S_SHIFTOUT;
 						shiftreg <= DATA_IN;
+                        read_data_done <= '1';
 					end if;
 				end if;
 			elsif(state = S_SENDACK2) then
@@ -247,6 +231,7 @@ begin
 				WR <= '1';
 				address_incr <= '1';
 			elsif(state = S_SHIFTOUT) then
+                read_data_done <= '0';
 				if (falling_scl = '1') then
 					SDA_OUT <= shiftreg(7);
 					shiftreg(7 downto 1) <= shiftreg(6 downto 0);
@@ -271,6 +256,7 @@ begin
 						state <= S_SHIFTOUT;
 						counter <= 7;
 						shiftreg <= DATA_IN;
+                        read_data_done <= '1';
 					else
 						state <= S_IDLE;
 					end if;
@@ -279,6 +265,7 @@ begin
 		end if;
 	end process OTO;
 					
+    READ_DONE <= read_data_done;
 
 end rtl;
 
