@@ -28,7 +28,8 @@ architecture stimulus of TB_I2CSLAVE_WRITE is
 			DATA_OUT	: out	std_logic_vector(7 downto 0);
 			DATA_IN		: in	std_logic_vector(7 downto 0);
 			WR			: out	std_logic;
-			RD			: out	std_logic
+			RD			: out	std_logic;
+            READ_DONE   : out	std_logic
 		);
 	end component;
 
@@ -65,7 +66,8 @@ begin
 			DATA_OUT		=> DATA_OUT,
 			DATA_IN		=> DATA_IN,
 			WR		=> WR,
-			RD		=> RD
+			RD		=> RD,
+            READ_DONE => open
 		);
 
 --

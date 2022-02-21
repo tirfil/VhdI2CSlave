@@ -27,7 +27,8 @@ architecture stimulus of TB_I2CSLAVE_READ is
 			DATA_OUT		: out	std_logic_vector(7 downto 0);
 			DATA_IN		: in	std_logic_vector(7 downto 0);
 			WR		: out	std_logic;
-			RD		: out	std_logic
+			RD		: out	std_logic;
+            READ_DONE   : out	std_logic
 		);
 	end component;
 
@@ -44,6 +45,7 @@ architecture stimulus of TB_I2CSLAVE_READ is
 	signal DATA_IN		: std_logic_vector(7 downto 0);
 	signal WR		: std_logic;
 	signal RD		: std_logic;
+    signal READ_DONE    : std_logic;
 
 --
 	signal RUNNING	: std_logic := '1';
@@ -64,7 +66,8 @@ begin
 			DATA_OUT		=> DATA_OUT,
 			DATA_IN		=> DATA_IN,
 			WR		=> WR,
-			RD		=> RD
+			RD		=> RD,
+            READ_DONE   => READ_DONE
 		);
 
 --
