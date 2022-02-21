@@ -4,7 +4,8 @@ I2C Slave interface.
 
 Written in VHDL.
 
-based on http://embeddedmicro.weebly.com/raspberry-pi.html
+based on 
+https://embeddedmicro.weebly.com/raspberry-pi-i2c-timing.html
 
 *Purpose is an micro interface to access registers inside a FPGA.*  
 
