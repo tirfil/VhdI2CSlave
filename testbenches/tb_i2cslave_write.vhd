@@ -123,7 +123,7 @@ begin
 		SCL_IN <= '1';
 		wait for 80 ns;
 		SDA_IN <= '1'; -- stop
-		wait for 80 ns;
+		wait for 1000 ns;
 		RUNNING <= '0';
 		wait;
 	end process GO;

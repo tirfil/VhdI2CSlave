@@ -135,9 +135,11 @@ begin
 		wait for 80 ns;
 		SendData(x"70"); -- 38 < 1 + write
 		SendData(x"55"); -- address
-		SDA_IN <= '1';
-		wait for 80 ns;
+        SDA_IN <= '0'; -- prepare stop bit
+        wait for 80 ns;
 		SCL_IN <= '1';
+		wait for 80 ns;
+		SDA_IN <= '1';
 		wait for 80 ns;
 		SDA_IN <= '0'; -- start2
 		wait for 80 ns;
@@ -145,10 +147,12 @@ begin
 		ReadData('0'); -- ack
 		ReadData('0'); -- ack
 		ReadData('1'); -- nack
+        SDA_IN <= '0'; -- prepare stop bit
+        wait for 80 ns; 
 		SCL_IN <= '1';
 		wait for 80 ns;
 		SDA_IN <= '1'; -- stop
-		wait for 80 ns;
+		wait for 1000 ns;
 		RUNNING <= '0';
 		wait;
 	end process GO;
